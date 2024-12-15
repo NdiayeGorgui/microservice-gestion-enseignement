@@ -1,0 +1,21 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: GATEWAY-SERVICE 
+  cloud:
+    gateway:
+      routes:
+      - id: etudiant-service
+        uri: lb://ETUDIANT-SERVICE
+        predicates: 
+        - Path=/etudiants/**    
+      - id: enseignant-service
+        uri: lb://ENSEIGNANT-SERVICE
+        predicates: 
+        - Path=/enseignants/**  
+      - id: cours-service
+        uri: lb://COURS-SERVICE
+        predicates: 
+        - Path=/cours/**  
+     
